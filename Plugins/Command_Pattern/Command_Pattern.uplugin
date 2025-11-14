@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "Command_Pattern",
+	"Description": "command design pattern",
+	"Category": "System",
+	"CreatedBy": "AliBadpa",
+	"CreatedByURL": "https://alibadpa.weebly.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Command_Pattern",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
