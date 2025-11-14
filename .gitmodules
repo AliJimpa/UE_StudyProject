@@ -1,0 +1,3 @@
+[submodule "Plugins/HitmapCore"]
+	path = Plugins/HitmapCore
+	url = https://github.com/AliJimpa/HitmapCore.git
