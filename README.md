@@ -1,4 +1,5 @@
 # Unreal Practice Project
+This repository contains my personal Unreal project, where I experiment with features, mechanics, and systems learned from various game development courses.
 
 ## Overview
 This project is a personal learning and practice project created using Unreal Engine. It is intended for experimentation, testing features, and improving my skills with Unreal Engine.
