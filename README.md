@@ -36,6 +36,7 @@ ProjectRoot/
 1. Clone the repository:  
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
+   git clone --recurse-submodules https://github.com/AliJimpa/HitmapCore.git
    
 # 🧐 Titles
 - Polydin: this is some code & a System for implementing some level in Polydin (game Company). I worked there as a level designer
