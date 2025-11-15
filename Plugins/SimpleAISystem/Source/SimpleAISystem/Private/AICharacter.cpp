@@ -215,14 +215,14 @@ void AAICharacter::PrintDebug(FString Message, FString Objective, EDebugtypeA ty
 	{
 		if (DebugCoreSystem)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, delay, messagecolor, FString::Printf(TEXT("[%s :: %s] : %s"), *GetController()->GetName(), *Objective, *Message));
+			//GEngine->AddOnScreenDebugMessage(-1, delay, messagecolor, FString::Printf(TEXT("[%s :: %s] : %s"), *GetController()->GetName(), *Objective, *Message));
 		}
 	}
 	else
 	{
 		if (Debug)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, delay, messagecolor, FString::Printf(TEXT("[%s :: %s] : %s"), *GetController()->GetName(), *Objective, *Message));
+			//GEngine->AddOnScreenDebugMessage(-1, delay, messagecolor, FString::Printf(TEXT("[%s :: %s] : %s"), *GetController()->GetName(), *Objective, *Message));
 		}
 	}
 }
