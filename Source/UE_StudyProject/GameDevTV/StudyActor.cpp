@@ -16,6 +16,7 @@ void AStudyActor::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogTemp,Display,TEXT("Hallolee"));
+	UE_LOG(LogTemp,Display,TEXT("Hallolee"));
 	
 }
 
