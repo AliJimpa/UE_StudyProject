@@ -19,8 +19,20 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void MoveActor(float deltatime);
+	void RotateActor(float deltatime);
+	float GetDistanceMoved(FVector CurrentLoc);
+	FVector startLocation;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere)
+	FVector actorVelocity = FVector(1,0,0);
+	UPROPERTY(EditAnywhere)
+	FRotator rotateVelocity = FRotator(1,0,0);
+	UPROPERTY(EditAnywhere)
+	float moveDistance = 10;
 
 };
