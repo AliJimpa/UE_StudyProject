@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/BoxComponent.h"
+#include "GD_Mover.h"
 #include "GD_BoxTrigger.generated.h"
 
 /**
@@ -20,6 +21,25 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+
+	/** called when something enters the sphere component */
+	UFUNCTION()
+	void OnOverlapBegin(class UPrimitiveComponent *OverlappedComp, 
+		class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
+	/** called when something leaves the sphere component */
+	UFUNCTION()
+	void OnOverlapEnd(class UPrimitiveComponent *OverlappedComp, 
+		class AActor *OtherActor, class UPrimitiveComponent *OtherComp, int32 OtherBodyIndex);
+
+	UPROPERTY(EditAnywhere)
+	AActor *TargetDoor;
+	UPROPERTY(EditAnywhere)
+	FName BeginTag;
+	UPROPERTY(EditAnywhere)
+	FName EndTag;
+
+
+	UGD_Mover *DoorMover;
 
 public:
 	// Called every frame

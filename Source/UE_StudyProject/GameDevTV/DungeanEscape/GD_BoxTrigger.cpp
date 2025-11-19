@@ -6,6 +6,10 @@
 UGD_BoxTrigger::UGD_BoxTrigger()
 {
     PrimaryComponentTick.bCanEverTick = false;
+
+    OnComponentBeginOverlap.AddDynamic(this, &UGD_BoxTrigger::OnOverlapBegin); // set up a notification for when this component overlaps something
+    OnComponentEndOverlap.AddDynamic(this, &UGD_BoxTrigger::OnOverlapEnd);     // set up a notification for when this component overlaps something
+
     UE_LOG(LogTemp, Display, TEXT("Trigger Constructed"));
 }
 
@@ -13,10 +17,50 @@ void UGD_BoxTrigger::BeginPlay()
 {
     Super::BeginPlay();
     UE_LOG(LogTemp, Display, TEXT("Trigger Begin"));
+    if (TargetDoor != nullptr)
+    {
+        DoorMover = TargetDoor->FindComponentByClass<UGD_Mover>();
+    }
+    else
+    {
+        UE_LOG(LogTemp, Display, TEXT("Door Not Selected"));
+    }
 }
 
 void UGD_BoxTrigger::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
     UE_LOG(LogTemp, Display, TEXT("Trigger Tick!"));
+}
+
+void UGD_BoxTrigger::OnOverlapBegin(UPrimitiveComponent *OverlappedComp,
+                                    AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+{
+    if(!OtherActor->ActorHasTag(BeginTag))
+    return;
+
+    if (DoorMover)
+    {
+        DoorMover->ShouldMove = true;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Display, TEXT("The Door Should have Mover Component"));
+    }
+}
+
+void UGD_BoxTrigger::OnOverlapEnd(UPrimitiveComponent *OverlappedComp,
+                                  AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)
+{
+    if(!OtherActor->ActorHasTag(EndTag))
+    return;
+
+    if (DoorMover)
+    {
+        DoorMover->ShouldMove = false;
+    }
+    else
+    {
+        UE_LOG(LogTemp, Display, TEXT("The Door Should have Mover Component"));
+    }
 }
