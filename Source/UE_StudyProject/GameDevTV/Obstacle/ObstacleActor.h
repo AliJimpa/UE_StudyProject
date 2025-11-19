@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "StudyActor.generated.h"
+#include "ObstacleActor.generated.h"
 
 UCLASS()
-class UE_STUDYPROJECT_API AStudyActor : public AActor
+class UE_STUDYPROJECT_API AObstacleActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AStudyActor();
+	AObstacleActor();
 
 protected:
 	// Called when the game starts or when spawned

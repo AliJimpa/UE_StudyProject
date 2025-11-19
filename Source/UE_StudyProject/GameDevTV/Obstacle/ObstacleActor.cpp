@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "StudyActor.h"
+#include "ObstacleActor.h"
 
 // Sets default values
-AStudyActor::AStudyActor()
+AObstacleActor::AObstacleActor()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -17,7 +17,7 @@ void TESTLog()
 }
 
 // Called when the game starts or when spawned
-void AStudyActor::BeginPlay()
+void AObstacleActor::BeginPlay()
 {
 	Super::BeginPlay();
 	TESTLog();
@@ -25,7 +25,7 @@ void AStudyActor::BeginPlay()
 }
 
 // Called every frame
-void AStudyActor::Tick(float DeltaTime)
+void AObstacleActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
@@ -34,12 +34,12 @@ void AStudyActor::Tick(float DeltaTime)
 	
 }
 
-float AStudyActor::GetDistanceMoved(FVector currentLoc)
+float AObstacleActor::GetDistanceMoved(FVector currentLoc)
 {
 	return FVector::Dist(startLocation , currentLoc);
 }
 
-void AStudyActor::MoveActor(float deltatime)
+void AObstacleActor::MoveActor(float deltatime)
 {
 	// MoveObject
 	FVector CurrentPosition = GetActorLocation();
@@ -64,7 +64,7 @@ void AStudyActor::MoveActor(float deltatime)
 }
 
 
-void AStudyActor::RotateActor(float deltatime)
+void AObstacleActor::RotateActor(float deltatime)
 {
 	FRotator RotationToAdd = rotateVelocity * deltatime;
 	AddActorLocalRotation(RotationToAdd);
