@@ -37,6 +37,10 @@ protected:
 	FName BeginTag;
 	UPROPERTY(EditAnywhere)
 	FName EndTag;
+	UPROPERTY(VisibleAnywhere)
+	bool isTrigger = false;
+	UPROPERTY(VisibleAnywhere)
+	int OberlapCount = 0;
 
 
 	UGD_Mover *DoorMover;
@@ -44,4 +48,5 @@ protected:
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	void SetTigger(bool enable);
 };

@@ -33,15 +33,12 @@ void UGD_BoxTrigger::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
     UE_LOG(LogTemp, Display, TEXT("Trigger Tick!"));
 }
 
-void UGD_BoxTrigger::OnOverlapBegin(UPrimitiveComponent *OverlappedComp,
-                                    AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+void UGD_BoxTrigger::SetTigger(bool enable)
 {
-    if(!OtherActor->ActorHasTag(BeginTag))
-    return;
-
+    isTrigger = enable;
     if (DoorMover)
     {
-        DoorMover->ShouldMove = true;
+        DoorMover->ShouldMove = isTrigger;
     }
     else
     {
@@ -49,18 +46,22 @@ void UGD_BoxTrigger::OnOverlapBegin(UPrimitiveComponent *OverlappedComp,
     }
 }
 
+void UGD_BoxTrigger::OnOverlapBegin(UPrimitiveComponent *OverlappedComp,
+                                    AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
+{
+    if (!OtherActor->ActorHasTag(BeginTag))
+        return;
+
+    OberlapCount++;
+    SetTigger(true);
+}
+
 void UGD_BoxTrigger::OnOverlapEnd(UPrimitiveComponent *OverlappedComp,
                                   AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)
 {
-    if(!OtherActor->ActorHasTag(EndTag))
-    return;
-
-    if (DoorMover)
-    {
-        DoorMover->ShouldMove = false;
-    }
-    else
-    {
-        UE_LOG(LogTemp, Display, TEXT("The Door Should have Mover Component"));
-    }
+    if (!OtherActor->ActorHasTag(EndTag))
+        return;
+    OberlapCount--;
+    if (OberlapCount == 0)
+        SetTigger(false);
 }
