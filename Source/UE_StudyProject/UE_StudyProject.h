@@ -4,3 +4,9 @@
 
 #include "CoreMinimal.h"
 
+/** Main log category used across the project */
+DECLARE_LOG_CATEGORY_EXTERN(LogUE_StudyProject, Log, All);
+
+/** Main log category used across the project */
+DECLARE_LOG_CATEGORY_EXTERN(LogTP_FirstPerson, Log, All);
+
